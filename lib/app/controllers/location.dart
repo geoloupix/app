@@ -1,0 +1,3 @@
+class LocationController {
+  LocationController();
+}
