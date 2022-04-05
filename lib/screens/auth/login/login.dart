@@ -1,5 +1,6 @@
 import 'package:app/app/core/constants.dart';
 import 'package:app/widgets/button.dart';
+import 'package:app/widgets/text_input.dart';
 import 'package:flutter/material.dart';
 
 class AuthLoginScreen extends StatefulWidget {
@@ -10,6 +11,19 @@ class AuthLoginScreen extends StatefulWidget {
 }
 
 class _AuthLoginScreenState extends State<AuthLoginScreen> {
+  final formKey = GlobalKey<FormState>();
+  String email = "";
+  String password = "";
+
+  void submit() {
+    print("tapped");
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      print(email);
+      print(password);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,19 +39,46 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                     const SizedBox(height: 100),
                     Text("Login", style: AppConstants.texts.headline),
                     const SizedBox(height: 40),
-                    AppButton(
-                        text: "Login",
-                        onTap: () async {
-                          print("tapped");
-                        },
-                        type: ButtonType.primary),
+                    Form(
+                        key: formKey,
+                        child: Column(
+                          children: [
+                            AppTextInput(
+                              hint: "Email",
+                              validator: (v) {
+                                if (v == null || v.isEmpty) {
+                                  return "Field required";
+                                }
+                                final regex = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+                                if (!regex.hasMatch(v)) {
+                                  return "Invalid email format";
+                                }
+                              },
+                              onSaved: (v) {
+                                setState(() {
+                                  email = v!;
+                                });
+                              },
+                            ),
+                            const SizedBox(height: 10),
+                            AppTextInput(
+                              hint: "Password",
+                              validator: (v) {
+                                if (v == null || v.isEmpty) {
+                                  return "Field required";
+                                }
+                              },
+                              onSaved: (v) {
+                                setState(() {
+                                  password = v!;
+                                });
+                              },
+                              keyboardType: TextInputType.visiblePassword,
+                            ),
+                          ],
+                        )),
                     const SizedBox(height: 10),
-                    AppButton(
-                        text: "Register",
-                        onTap: () async {
-                          print("tapped");
-                        },
-                        type: ButtonType.secondary)
+                    AppButton(text: "Let's go!", onTap: submit, type: ButtonType.primary),
                   ],
                 ),
               ),

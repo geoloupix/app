@@ -60,7 +60,7 @@ class AppButton extends StatelessWidget {
                   child: Text(
                     text,
                     textAlign: TextAlign.center,
-                    style: AppConstants.texts.paragraph.copyWith(color: textColor),
+                    style: AppConstants.texts.button.copyWith(color: textColor),
                   )),
             ),
           ],

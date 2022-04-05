@@ -19,4 +19,5 @@ class _Colors {
 class _Texts {
   final headline = GoogleFonts.dmSans(fontSize: 48, fontWeight: FontWeight.bold, color: AppConstants.colors.black);
   final paragraph = GoogleFonts.dmSans(fontSize: 16, fontWeight: FontWeight.w400, color: AppConstants.colors.grey);
+  final button = GoogleFonts.dmSans(fontSize: 20, fontWeight: FontWeight.bold, color: AppConstants.colors.grey);
 }
