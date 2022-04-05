@@ -13,10 +13,10 @@ class ApiController {
 
   Future<Map<String, dynamic>?> login(Map<String, String> parameters) async {
     try {
-      final response = await Dio().post<Map<String, String>>("$_rootUrl/auth/login", data: parameters);
+      final response = await _dio.post<Map<String, String>>("$_rootUrl/auth/login", data: parameters);
       return response.data;
     } catch (e) {
-      debugPrint("$e");
+      return {"error": "$e"};
     }
   }
 }

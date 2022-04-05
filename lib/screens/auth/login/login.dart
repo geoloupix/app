@@ -1,4 +1,5 @@
 import 'package:app/app/core/constants.dart';
+import 'package:app/app/core/global.dart';
 import 'package:app/widgets/button.dart';
 import 'package:app/widgets/text_input.dart';
 import 'package:flutter/material.dart';
@@ -12,15 +13,15 @@ class AuthLoginScreen extends StatefulWidget {
 
 class _AuthLoginScreenState extends State<AuthLoginScreen> {
   final formKey = GlobalKey<FormState>();
-  String email = "";
+  String username = "";
   String password = "";
 
-  void submit() {
-    print("tapped");
+  void submit() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      print(email);
-      print(password);
+      final response = await authController.login(username, password);
+      print("response !");
+      print(response);
     }
   }
 
@@ -44,19 +45,15 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                         child: Column(
                           children: [
                             AppTextInput(
-                              hint: "Email",
+                              hint: "Username",
                               validator: (v) {
                                 if (v == null || v.isEmpty) {
                                   return "Field required";
                                 }
-                                final regex = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
-                                if (!regex.hasMatch(v)) {
-                                  return "Invalid email format";
-                                }
                               },
                               onSaved: (v) {
                                 setState(() {
-                                  email = v!;
+                                  username = v!;
                                 });
                               },
                             ),
