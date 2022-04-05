@@ -14,10 +14,9 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
       initialRoute: "loading",
       onGenerateRoute: AppRouter.onGenerateRoute,
       themeMode: ThemeMode.light,

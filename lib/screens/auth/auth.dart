@@ -29,7 +29,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 AppButton(
                     text: "Login",
                     onTap: () async {
-                      print("tapped");
+                      Navigator.pushNamed(context, "/auth/login");
                     },
                     type: ButtonType.primary),
                 const SizedBox(height: 10),
