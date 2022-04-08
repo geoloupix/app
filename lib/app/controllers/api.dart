@@ -16,6 +16,9 @@ class ApiController {
       final response = await _dio.post<Map<String, String>>("$_rootUrl/auth/login", data: parameters);
       return response.data;
     } catch (e) {
+      if (e is DioError) {
+        return {"error": e.message};
+      }
       return {"error": "$e"};
     }
   }

@@ -15,13 +15,19 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
   final formKey = GlobalKey<FormState>();
   String username = "";
   String password = "";
+  String? error;
 
   void submit() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       final response = await authController.login(username, password);
-      print("response !");
-      print(response);
+      if (response != null) {
+        setState(() {
+          error = response;
+        });
+      } else {
+        // TODO: Navigate to home screen
+      }
     }
   }
 
@@ -76,26 +82,47 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                         )),
                     const SizedBox(height: 10),
                     AppButton(text: "Let's go!", onTap: submit, type: ButtonType.primary),
+                    if (error != null)
+                      Column(
+                        children: [
+                          const SizedBox(height: 10),
+                          Container(
+                            width: double.infinity,
+                            decoration:
+                                BoxDecoration(color: AppConstants.colors.red, borderRadius: BorderRadius.circular(8)),
+                            padding: const EdgeInsets.all(6),
+                            child: Text(error!,
+                                style: AppConstants.texts.paragraph.copyWith(color: AppConstants.colors.white)),
+                          )
+                        ],
+                      )
                   ],
                 ),
               ),
             ),
             Positioned(
-              top: 12,
-              left: 12,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Row(
-                  children: [
-                    Icon(Icons.arrow_back_rounded, color: AppConstants.colors.grey, size: 20),
-                    const SizedBox(width: 8),
-                    Text("Back", style: AppConstants.texts.paragraph)
-                  ],
-                ),
-              ),
-            ),
+                top: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                    color: AppConstants.colors.white,
+                    padding: const EdgeInsets.all(12),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Row(
+                            children: [
+                              Icon(Icons.arrow_back_rounded, color: AppConstants.colors.grey, size: 20),
+                              const SizedBox(width: 8),
+                              Text("Back", style: AppConstants.texts.paragraph)
+                            ],
+                          ),
+                        ),
+                      ],
+                    ))),
           ],
         ));
   }
