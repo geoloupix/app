@@ -110,9 +110,7 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                     child: Row(
                       children: [
                         GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
+                          onTap: () => Navigator.pop(context),
                           child: Row(
                             children: [
                               Icon(Icons.arrow_back_rounded, color: AppConstants.colors.grey, size: 20),

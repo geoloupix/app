@@ -1,7 +1,6 @@
 import 'package:app/app/controllers/auth.dart';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 class ApiController {
   final AuthController _auth;
@@ -14,6 +13,18 @@ class ApiController {
   Future<Map<String, dynamic>?> login(Map<String, String> parameters) async {
     try {
       final response = await _dio.post<Map<String, String>>("$_rootUrl/auth/login", data: parameters);
+      return response.data;
+    } catch (e) {
+      if (e is DioError) {
+        return {"error": e.message};
+      }
+      return {"error": "$e"};
+    }
+  }
+
+  Future<Map<String, dynamic>?> register(Map<String, String> parameters) async {
+    try {
+      final response = await _dio.post<Map<String, String>>("$_rootUrl/auth/register", data: parameters);
       return response.data;
     } catch (e) {
       if (e is DioError) {
