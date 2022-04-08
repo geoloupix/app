@@ -13,6 +13,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
+    // TODO: implement proper auth
     Future.delayed(const Duration(seconds: 1), () {
       Navigator.pushReplacementNamed(context, "/auth");
     });
