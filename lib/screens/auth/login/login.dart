@@ -1,5 +1,4 @@
 import 'package:app/app/core/constants.dart';
-import 'package:app/app/core/global.dart';
 import 'package:app/widgets/button.dart';
 import 'package:app/widgets/text_input.dart';
 import 'package:flutter/material.dart';
@@ -18,17 +17,19 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
   String? error;
 
   void submit() async {
-    if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
-      final response = await authController.login(username, password);
-      if (response != null) {
-        setState(() {
-          error = response;
-        });
-      } else {
-        // TODO: Navigate to home screen
-      }
-    }
+    // TODO: remove hard coded part
+    Navigator.pushNamed(context, "/home");
+    // if (formKey.currentState!.validate()) {
+    //   formKey.currentState!.save();
+    //   final response = await authController.login(username, password);
+    //   if (response != null) {
+    //     setState(() {
+    //       error = response;
+    //     });
+    //   } else {
+    //     Navigator.pushNamed(context, "/home");
+    //   }
+    // }
   }
 
   @override

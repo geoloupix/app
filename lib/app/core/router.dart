@@ -2,6 +2,7 @@ import 'package:app/screens/auth/auth.dart';
 import 'package:app/screens/auth/login/login.dart';
 import 'package:app/screens/auth/register/register.dart';
 import 'package:app/screens/error/error.dart';
+import 'package:app/screens/home/home.dart';
 import 'package:app/screens/loading/loading.dart';
 import 'package:flutter/material.dart';
 
@@ -125,5 +126,6 @@ class AppRouter {
     const AppRoute(path: "/auth", widget: AuthScreen()),
     const AppRoute(path: "/auth/login", widget: AuthLoginScreen()),
     const AppRoute(path: "/auth/register", widget: AuthRegisterScreen()),
+    const AppRoute(path: "/home", widget: HomeScreen()),
   ];
 }
