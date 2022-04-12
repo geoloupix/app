@@ -19,12 +19,14 @@ class _StorageScreenState extends State<StorageScreen> with TickerProviderStateM
   final List<Category> categories = [];
   final List<Location> locations = [];
   bool loading = false;
+  Category? category;
 
   Future<void> fetch() async {
     if (loading) return;
     setState(() {
       loading = true;
     });
+    print(category?.name);
     await Future.delayed(const Duration(seconds: 2), () async {
       setState(() {
         locations.add(Location(id: "0", name: "Some location", coordinates: LatLng(5, 10), folderId: null));
@@ -56,8 +58,15 @@ class _StorageScreenState extends State<StorageScreen> with TickerProviderStateM
   }
 
   @override
+  void setState(fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final String? id = AppRouter.getArgs<String?>(context);
+    category = AppRouter.getArgs<Category?>(context);
     return Scaffold(
         backgroundColor: AppConstants.colors.white,
         body: SizedBox(
@@ -71,10 +80,10 @@ class _StorageScreenState extends State<StorageScreen> with TickerProviderStateM
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 100),
-                      Text(id ?? "Storage", style: AppConstants.texts.headline),
+                      Text(category == null ? "Storage" : category!.name, style: AppConstants.texts.headline),
                       const SizedBox(height: 40),
                       ConstrainedBox(
-                        constraints: BoxConstraints(minHeight: 200),
+                        constraints: const BoxConstraints(minHeight: 200),
                         child: Stack(
                           children: [
                             Column(
