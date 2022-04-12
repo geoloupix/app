@@ -18,7 +18,8 @@ class AuthController {
         id: response["id"]!,
         username: response["username"]!,
         email: response["email"]!,
-        password: response["password"]!);
+        password: response["password"]!,
+        token: response["token"]!);
     await _save();
     return null;
   }
@@ -31,7 +32,8 @@ class AuthController {
         id: response["id"]!,
         username: response["username"]!,
         email: response["email"]!,
-        password: response["password"]!);
+        password: response["password"]!,
+        token: response["token"]!);
     await _save();
     return null;
   }
@@ -53,7 +55,12 @@ class AuthController {
     final data = await KVS.read(key: "auth");
     if (data == null) false;
     final Map<String, String> map = json.decode(data!);
-    user = User(id: map["id"]!, username: map["username"]!, email: map["email"]!, password: map["password"]!);
+    user = User(
+        id: map["id"]!,
+        username: map["username"]!,
+        email: map["email"]!,
+        password: map["password"]!,
+        token: map["token"]!);
     return true;
   }
 }

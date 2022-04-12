@@ -132,9 +132,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 GestureDetector(
-                    onTap: () {
-                      print("tapped");
-                    },
+                    onTap: () => Navigator.pushNamed(context, "/storage"),
                     child: Container(
                         padding: const EdgeInsets.all(8),
                         child: Icon(Icons.menu_rounded, color: AppConstants.colors.grey))),

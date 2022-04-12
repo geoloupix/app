@@ -13,6 +13,7 @@ class _Colors {
   final white = const Color(0xffffffff);
   final black = const Color(0xff282828);
   final grey = const Color(0xff7E7E7E);
+  final lightGrey = const Color(0xffE5E5E5);
   final red = const Color(0xffEF4444);
 }
 
