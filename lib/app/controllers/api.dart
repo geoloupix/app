@@ -24,7 +24,7 @@ class ApiController {
 
   Future<Map<String, dynamic>?> register(Map<String, String> parameters) async {
     try {
-      final response = await _dio.post<Map<String, String>>("$_rootUrl/auth/register", data: parameters);
+      final response = await _dio.post("$_rootUrl/register", data: parameters);
       return response.data;
     } catch (e) {
       if (e is DioError) {

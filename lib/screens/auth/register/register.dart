@@ -27,7 +27,7 @@ class _AuthRegisterScreenState extends State<AuthRegisterScreen> {
           error = response;
         });
       } else {
-        // TODO: Navigate to home screen
+        Navigator.pushReplacementNamed(context, "/home");
       }
     }
   }
@@ -75,6 +75,9 @@ class _AuthRegisterScreenState extends State<AuthRegisterScreen> {
                                 if (v == null || v.isEmpty) {
                                   return "Field required";
                                 }
+                                if (v.length > 100) {
+                                  return "Username too long";
+                                }
                               },
                               onSaved: (v) {
                                 setState(() {
@@ -88,6 +91,9 @@ class _AuthRegisterScreenState extends State<AuthRegisterScreen> {
                               validator: (v) {
                                 if (v == null || v.isEmpty) {
                                   return "Field required";
+                                }
+                                if (v.length < 8) {
+                                  return "Password too short";
                                 }
                                 setState(() {
                                   password = v;

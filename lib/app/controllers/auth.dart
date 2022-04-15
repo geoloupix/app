@@ -15,25 +15,17 @@ class AuthController {
     if (response == null) return null;
     if (response["error"] != null) return response["error"];
     user = User(
-        id: response["id"]!,
-        username: response["username"]!,
-        email: response["email"]!,
-        password: response["password"]!,
-        token: response["token"]!);
+        id: response["id"]!, username: response["username"]!, email: response["email"]!, token: response["token"]!);
     await _save();
     return null;
   }
 
   Future<String?> register({required String email, required String username, required String password}) async {
-    final response = await api.login({"username": username, "password": password, "email": email});
+    final response = await api.register({"username": username, "password": password, "email": email});
     if (response == null) return null;
     if (response["error"] != null) return response["error"];
     user = User(
-        id: response["id"]!,
-        username: response["username"]!,
-        email: response["email"]!,
-        password: response["password"]!,
-        token: response["token"]!);
+        id: response["uuid"]!, username: response["username"]!, email: response["email"]!, token: response["token"]!);
     await _save();
     return null;
   }
@@ -43,24 +35,15 @@ class AuthController {
 
     await KVS.write(
         key: "auth",
-        value: json.encode(<String, String>{
-          "id": user!.id,
-          "username": user!.username,
-          "email": user!.email,
-          "password": user!.password
-        }));
+        value: json.encode(
+            <String, String>{"id": user!.id, "username": user!.username, "email": user!.email, "token": user!.token}));
   }
 
-  Future<bool> _load() async {
+  Future<bool> load() async {
     final data = await KVS.read(key: "auth");
-    if (data == null) false;
-    final Map<String, String> map = json.decode(data!);
-    user = User(
-        id: map["id"]!,
-        username: map["username"]!,
-        email: map["email"]!,
-        password: map["password"]!,
-        token: map["token"]!);
+    if (data == null) return false;
+    final Map map = json.decode(data);
+    user = User(id: map["id"]!, username: map["username"]!, email: map["email"]!, token: map["token"]!);
     return true;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:app/app/core/constants.dart';
+import 'package:app/app/core/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -13,10 +14,17 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    // TODO: implement proper auth
-    Future.delayed(const Duration(seconds: 1), () {
+    auth();
+  }
+
+  Future<void> auth() async {
+    final hasUser = await authController.load();
+    print(authController.user);
+    if (!hasUser) {
       Navigator.pushReplacementNamed(context, "/auth");
-    });
+    } else {
+      Navigator.pushReplacementNamed(context, "/home");
+    }
   }
 
   @override
