@@ -1,4 +1,5 @@
 import 'package:app/app/core/constants.dart';
+import 'package:app/widgets/add_location_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -122,7 +123,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           foregroundColor: AppConstants.colors.white,
           elevation: 1,
           child: const Icon(Icons.add_rounded),
-          onPressed: () {}),
+          onPressed: () async {
+            await showModalBottomSheet<void>(context: context, builder: (context) => const AddLocationSheet());
+          }),
       bottomNavigationBar: BottomAppBar(
           elevation: 1,
           child: Container(
