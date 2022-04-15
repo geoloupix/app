@@ -86,14 +86,22 @@ class _StorageScreenState extends State<StorageScreen> with TickerProviderStateM
                         constraints: const BoxConstraints(minHeight: 200),
                         child: Stack(
                           children: [
-                            Column(
-                              children: [
-                                ...children<Category>(categories, (e) => CategoryWidget(e)).toList(),
-                                const SizedBox(height: 12),
-                                ...children<Location>(locations, (e) => LocationWidget(e)).toList(),
-                              ],
-                            ),
-                            if (loading)
+                            !(locations.isEmpty && categories.isEmpty)
+                                ? Column(
+                                    children: [
+                                      ...children<Category>(categories, (e) => CategoryWidget(e)).toList(),
+                                      const SizedBox(height: 12),
+                                      ...children<Location>(locations, (e) => LocationWidget(e)).toList(),
+                                    ],
+                                  )
+                                : Column(children: [
+                                    const SizedBox(height: 100),
+                                    SpinKitWave(
+                                      color: AppConstants.colors.black,
+                                      size: 30,
+                                    )
+                                  ]),
+                            if (loading && !(locations.isEmpty || categories.isEmpty))
                               Positioned(
                                   top: 0,
                                   left: 0,
