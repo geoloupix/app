@@ -26,7 +26,6 @@ class _StorageScreenState extends State<StorageScreen> with TickerProviderStateM
     setState(() {
       loading = true;
     });
-    print(category?.name);
     await Future.delayed(const Duration(seconds: 1), () async {
       setState(() {
         locations.add(Location(id: "0", name: "Some location", coordinates: LatLng(5, 10), folderId: null));

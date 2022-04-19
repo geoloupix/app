@@ -19,7 +19,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   Future<void> auth() async {
     final hasUser = await authController.load();
-    print(authController.user);
     if (!hasUser) {
       Navigator.pushReplacementNamed(context, "/auth");
     } else {

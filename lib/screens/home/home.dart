@@ -140,9 +140,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         padding: const EdgeInsets.all(8),
                         child: Icon(Icons.menu_rounded, color: AppConstants.colors.grey))),
                 GestureDetector(
-                    onTap: () {
-                      print("tapped");
-                    },
+                    onTap: () => Navigator.pushNamed(context, "/profile"),
                     child: Container(
                         padding: const EdgeInsets.all(8),
                         child: Icon(Icons.person_rounded, color: AppConstants.colors.grey))),

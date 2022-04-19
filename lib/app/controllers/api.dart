@@ -12,11 +12,11 @@ class ApiController {
 
   Future<Map<String, dynamic>?> login(Map<String, String> parameters) async {
     try {
-      final response = await _dio.post<Map<String, String>>("$_rootUrl/auth/login", data: parameters);
+      final response = await _dio.post("$_rootUrl/login", data: parameters);
       return response.data;
     } catch (e) {
       if (e is DioError) {
-        return {"error": e.message};
+        return {"error": e.response?.data["message"] ?? e.message};
       }
       return {"error": "$e"};
     }
@@ -28,7 +28,7 @@ class ApiController {
       return response.data;
     } catch (e) {
       if (e is DioError) {
-        return {"error": e.message};
+        return {"error": e.response?.data["message"] ?? e.message};
       }
       return {"error": "$e"};
     }

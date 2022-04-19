@@ -15,7 +15,7 @@ class AuthController {
     if (response == null) return null;
     if (response["error"] != null) return response["error"];
     user = User(
-        id: response["id"]!, username: response["username"]!, email: response["email"]!, token: response["token"]!);
+        id: response["uuid"]!, username: response["username"]!, email: response["email"]!, token: response["token"]!);
     await _save();
     return null;
   }
@@ -45,5 +45,10 @@ class AuthController {
     final Map map = json.decode(data);
     user = User(id: map["id"]!, username: map["username"]!, email: map["email"]!, token: map["token"]!);
     return true;
+  }
+
+  Future<void> logout() async {
+    user = null;
+    await KVS.deleteAll();
   }
 }
