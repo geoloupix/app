@@ -22,9 +22,7 @@ class _AuthScreenState extends State<AuthScreen> {
               children: [
                 const SizedBox(height: 100),
                 Text("Start", style: AppConstants.texts.headline),
-                Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam urna libero, pharetra eu malesuada a, tincidunt et erat. Fusce ut urna sapien.",
-                    style: AppConstants.texts.paragraph),
+                Text("Best location app yet. Save, organize and share locations.", style: AppConstants.texts.paragraph),
                 const SizedBox(height: 40),
                 AppButton(
                     text: "Login", onTap: () => Navigator.pushNamed(context, "/auth/login"), type: ButtonType.primary),
