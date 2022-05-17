@@ -1,5 +1,7 @@
 import 'package:app/app/core/constants.dart';
 import 'package:app/app/core/global.dart';
+import 'package:app/app/core/router.dart';
+import 'package:app/app/models/location.dart';
 import 'package:app/widgets/add_location_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -15,6 +17,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final MapController mapController = MapController();
   static const double defaultZoomValue = 6.5;
+  Location? initialLocation;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if (initialLocation != null) {
+        _animatedMapMove(initialLocation!.coordinates, 10);
+      }
+    });
+  }
 
   void _animatedMapMove(LatLng destLocation, [double destZoom = defaultZoomValue]) {
     // Create some tweens. These serve to split up the transition from one location to another.
@@ -47,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    initialLocation = AppRouter.getArgs<Location?>(context);
     return Scaffold(
       backgroundColor: AppConstants.colors.white,
       body: Stack(
