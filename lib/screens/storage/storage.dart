@@ -1,4 +1,5 @@
 import 'package:app/app/core/constants.dart';
+import 'package:app/app/core/global.dart';
 import 'package:app/app/core/router.dart';
 import 'package:app/app/models/category.dart';
 import 'package:app/app/models/location.dart';
@@ -6,7 +7,6 @@ import 'package:app/widgets/category.dart';
 import 'package:app/widgets/location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:latlong2/latlong.dart';
 
 class StorageScreen extends StatefulWidget {
   const StorageScreen({Key? key}) : super(key: key);
@@ -26,13 +26,14 @@ class _StorageScreenState extends State<StorageScreen> with TickerProviderStateM
     setState(() {
       loading = true;
     });
-    await Future.delayed(const Duration(seconds: 1), () async {
-      setState(() {
-        locations.add(Location(id: "0", name: "Some location", coordinates: LatLng(5, 10), folderId: null));
-        categories.add(const Category(id: "0", name: "Some category", userId: "00", parentId: null));
-      });
-    });
+    final res = await locationController.getAll(folderId: category?.id);
     setState(() {
+      if (res.error == null) {
+        locations.clear();
+        locations.addAll(res.locations);
+        categories.clear();
+        categories.addAll(res.categories);
+      }
       loading = false;
     });
   }
@@ -94,13 +95,13 @@ class _StorageScreenState extends State<StorageScreen> with TickerProviderStateM
                                     ],
                                   )
                                 : Column(children: [
-                                    const SizedBox(height: 100),
-                                    SpinKitWave(
-                                      color: AppConstants.colors.black,
-                                      size: 30,
-                                    )
+                                    const SizedBox(
+                                      height: 20,
+                                      width: double.infinity,
+                                    ),
+                                    Text("Category is empty", style: AppConstants.texts.paragraph)
                                   ]),
-                            if (loading && !(locations.isEmpty || categories.isEmpty))
+                            if (loading)
                               Positioned(
                                   top: 0,
                                   left: 0,

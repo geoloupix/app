@@ -12,7 +12,6 @@ class AuthController {
 
   Future<String?> login(String username, String password) async {
     final response = await api.login({"username": username, "password": password});
-    if (response == null) return null;
     if (response["error"] != null) return response["error"];
     user = User(
         id: response["uuid"]!, username: response["username"]!, email: response["email"]!, token: response["token"]!);
@@ -22,7 +21,6 @@ class AuthController {
 
   Future<String?> register({required String email, required String username, required String password}) async {
     final response = await api.register({"username": username, "password": password, "email": email});
-    if (response == null) return null;
     if (response["error"] != null) return response["error"];
     user = User(
         id: response["uuid"]!, username: response["username"]!, email: response["email"]!, token: response["token"]!);

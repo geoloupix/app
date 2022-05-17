@@ -10,7 +10,7 @@ class ApiController {
   final Dio _dio = Dio();
   final String _rootUrl = "https://geoloupix.fr/api";
 
-  Future<Map<String, dynamic>?> login(Map<String, String> parameters) async {
+  Future<Map<String, dynamic>> login(Map<String, String> parameters) async {
     try {
       final response = await _dio.post("$_rootUrl/login", data: parameters);
       return response.data;
@@ -22,7 +22,7 @@ class ApiController {
     }
   }
 
-  Future<Map<String, dynamic>?> register(Map<String, String> parameters) async {
+  Future<Map<String, dynamic>> register(Map<String, String> parameters) async {
     try {
       final response = await _dio.post("$_rootUrl/register", data: parameters);
       return response.data;
@@ -30,6 +30,22 @@ class ApiController {
       if (e is DioError) {
         return {"error": e.response?.data["message"] ?? e.message};
       }
+      return {"error": "$e"};
+    }
+  }
+
+  Future<Map<String, dynamic>> getFolders(Map<String, String> parameters) async {
+    try {
+      final response = await _dio.get("$_rootUrl/folders",
+          queryParameters: parameters,
+          options: Options(headers: {
+            "X-Token": "${_auth.user?.token}",
+          }));
+      return response.data;
+    } catch (e) {
+      // if (e is DioError) {
+      //   return {"error": e.response?.data["message"] ?? e.message};
+      // }
       return {"error": "$e"};
     }
   }
