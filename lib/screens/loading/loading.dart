@@ -22,6 +22,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     if (!hasUser) {
       Navigator.pushReplacementNamed(context, "/auth");
     } else {
+      await locationController.getLocations();
       Navigator.pushReplacementNamed(context, "/home");
     }
   }

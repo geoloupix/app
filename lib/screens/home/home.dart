@@ -1,4 +1,5 @@
 import 'package:app/app/core/constants.dart';
+import 'package:app/app/core/global.dart';
 import 'package:app/widgets/add_location_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -65,7 +66,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 },
               ),
               MarkerLayerOptions(
-                  markers: [LatLng(51.5, -0.09), LatLng(30.5, 5)]
+                  markers: locationController.locations
+                      .map((e) => e.coordinates)
                       .map(
                         (e) => Marker(
                           width: 40,
