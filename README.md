@@ -18,7 +18,7 @@ For this project, we're using [Flutter](https://flutter.dev) `3.0.1`, a cross-pl
 
 App executable are available in the repository's releases section. [View latest](https://github.com/geoloupix/app/releases).
 
-To use it, download the archive `Geoloupix-<version>-windows.zip`, unzip it and run the executable.
+To use it, download the archive `Geoloupix-windows.zip`, unzip it and run the executable.
 
 ## Architecture
 
