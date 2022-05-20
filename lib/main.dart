@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:app/app/utils/kvs.dart';
-import 'package:app/widgets/app.dart';
+import 'package:geoloupix/app/utils/kvs.dart';
+import 'package:geoloupix/widgets/app.dart';
 import 'package:flutter/material.dart';
 
 const bool reset = false;

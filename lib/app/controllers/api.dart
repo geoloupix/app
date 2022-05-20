@@ -1,4 +1,4 @@
-import 'package:app/app/controllers/auth.dart';
+import 'package:geoloupix/app/controllers/auth.dart';
 
 import 'package:dio/dio.dart';
 

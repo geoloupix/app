@@ -1,7 +1,7 @@
-import 'package:app/app/core/constants.dart';
-import 'package:app/app/core/global.dart';
-import 'package:app/widgets/button.dart';
-import 'package:app/widgets/text_input.dart';
+import 'package:geoloupix/app/core/constants.dart';
+import 'package:geoloupix/app/core/global.dart';
+import 'package:geoloupix/widgets/button.dart';
+import 'package:geoloupix/widgets/text_input.dart';
 import 'package:flutter/material.dart';
 
 class AuthRegisterScreen extends StatefulWidget {

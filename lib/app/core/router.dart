@@ -1,11 +1,11 @@
-import 'package:app/screens/auth/auth.dart';
-import 'package:app/screens/auth/login/login.dart';
-import 'package:app/screens/auth/register/register.dart';
-import 'package:app/screens/error/error.dart';
-import 'package:app/screens/home/home.dart';
-import 'package:app/screens/loading/loading.dart';
-import 'package:app/screens/profile/profile.dart';
-import 'package:app/screens/storage/storage.dart';
+import 'package:geoloupix/screens/auth/auth.dart';
+import 'package:geoloupix/screens/auth/login/login.dart';
+import 'package:geoloupix/screens/auth/register/register.dart';
+import 'package:geoloupix/screens/error/error.dart';
+import 'package:geoloupix/screens/home/home.dart';
+import 'package:geoloupix/screens/loading/loading.dart';
+import 'package:geoloupix/screens/profile/profile.dart';
+import 'package:geoloupix/screens/storage/storage.dart';
 import 'package:flutter/material.dart';
 
 /// The class that represents a route.

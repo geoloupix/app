@@ -1,6 +1,6 @@
-import 'package:app/app/core/constants.dart';
-import 'package:app/app/core/global.dart';
-import 'package:app/widgets/button.dart';
+import 'package:geoloupix/app/core/constants.dart';
+import 'package:geoloupix/app/core/global.dart';
+import 'package:geoloupix/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {

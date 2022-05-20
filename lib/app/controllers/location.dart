@@ -1,7 +1,7 @@
-import 'package:app/app/controllers/api.dart';
-import 'package:app/app/controllers/auth.dart';
-import 'package:app/app/models/category.dart';
-import 'package:app/app/models/location.dart';
+import 'package:geoloupix/app/controllers/api.dart';
+import 'package:geoloupix/app/controllers/auth.dart';
+import 'package:geoloupix/app/models/category.dart';
+import 'package:geoloupix/app/models/location.dart';
 import 'package:latlong2/latlong.dart';
 
 class _GetRes {

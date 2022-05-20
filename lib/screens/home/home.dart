@@ -1,8 +1,8 @@
-import 'package:app/app/core/constants.dart';
-import 'package:app/app/core/global.dart';
-import 'package:app/app/core/router.dart';
-import 'package:app/app/models/location.dart';
-import 'package:app/widgets/add_location_sheet.dart';
+import 'package:geoloupix/app/core/constants.dart';
+import 'package:geoloupix/app/core/global.dart';
+import 'package:geoloupix/app/core/router.dart';
+import 'package:geoloupix/app/models/location.dart';
+import 'package:geoloupix/widgets/add_location_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';

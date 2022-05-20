@@ -1,4 +1,4 @@
-import 'package:app/app/core/constants.dart';
+import 'package:geoloupix/app/core/constants.dart';
 import 'package:flutter/material.dart';
 
 class AppTextInput extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:app/app/core/router.dart';
+import 'package:geoloupix/app/core/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

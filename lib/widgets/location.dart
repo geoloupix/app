@@ -1,6 +1,6 @@
-import 'package:app/app/core/constants.dart';
+import 'package:geoloupix/app/core/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:app/app/models/location.dart';
+import 'package:geoloupix/app/models/location.dart';
 
 class LocationWidget extends StatefulWidget {
   final Location location;

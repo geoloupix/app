@@ -1,5 +1,5 @@
-import 'package:app/app/core/constants.dart';
-import 'package:app/app/core/global.dart';
+import 'package:geoloupix/app/core/constants.dart';
+import 'package:geoloupix/app/core/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
