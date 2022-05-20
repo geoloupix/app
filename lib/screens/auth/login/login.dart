@@ -26,6 +26,7 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
           error = response;
         });
       } else {
+        await locationController.getLocations();
         Navigator.pushNamed(context, "/home");
       }
     }

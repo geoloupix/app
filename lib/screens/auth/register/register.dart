@@ -27,6 +27,7 @@ class _AuthRegisterScreenState extends State<AuthRegisterScreen> {
           error = response;
         });
       } else {
+        await locationController.getLocations();
         Navigator.pushReplacementNamed(context, "/home");
       }
     }
