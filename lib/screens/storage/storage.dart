@@ -52,7 +52,7 @@ class _StorageScreenState extends State<StorageScreen> with TickerProviderStateM
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       fetch();
     });
   }
