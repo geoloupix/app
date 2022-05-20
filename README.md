@@ -21,3 +21,14 @@ App executable are available in the repository's releases section. [View latest]
 To use it, download the archive `Geoloupix-<version>-windows.zip`, unzip it and run the executable.
 
 ## Architecture
+
+TODO
+
+## Commands
+
+### Release
+
+```bash
+$ git tag -a vX.Y.Z -m "Release vX.Y.Z"
+$ git push --follow-tags
+```

@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
@@ -31,13 +34,13 @@ jobs:
         run: flutter config --enable-windows-desktop
 
       - name: Build artifacts
-        run: flutter build windows --release --build-number=$(git rev-list HEAD --count)
+        run: flutter build windows
 
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: "zip"
-          filename: Geoloupix-$(git rev-list HEAD --count)-windows.zip
+          filename: Geoloupix-${{ env.RELEASE_VERSION }}-windows.zip
           directory: build/windows/runner/Release
 
       - name: Windows Release
@@ -45,4 +48,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: build/windows/runner/Release/Geoloupix-$(git rev-list HEAD --count)-windows.zip
+          files: build/windows/runner/Release/Geoloupix-${{ env.RELEASE_VERSION }}-windows.zip
