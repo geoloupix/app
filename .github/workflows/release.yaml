@@ -1,6 +1,9 @@
 name: Release
 
-on: push
+on:
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
   build-and-release-windows:
@@ -28,19 +31,18 @@ jobs:
         run: flutter config --enable-windows-desktop
 
       - name: Build artifacts
-        run: flutter build windows --release
+        run: flutter build windows --release --build-number=$(git rev-list HEAD --count)
 
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: "zip"
-          filename: Geoloupix-${{github.ref_name}}-windows.zip
+          filename: Geoloupix-$(git rev-list HEAD --count)-windows.zip
           directory: build/windows/runner/Release
 
       - name: Windows Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: build/windows/runner/Release/Geoloupix-${{github.ref_name}}-windows.zip
+          files: build/windows/runner/Release/Geoloupix-$(git rev-list HEAD --count)-windows.zip
