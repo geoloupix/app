@@ -61,11 +61,13 @@ class _AuthRegisterScreenState extends State<AuthRegisterScreen> {
                                 if (!regex.hasMatch(v)) {
                                   return "Invalid email format";
                                 }
+                                return null;
                               },
                               onSaved: (v) {
                                 setState(() {
                                   email = v!;
                                 });
+                                return null;
                               },
                             ),
                             const SizedBox(height: 10),
@@ -78,11 +80,13 @@ class _AuthRegisterScreenState extends State<AuthRegisterScreen> {
                                 if (v.length > 100) {
                                   return "Username too long";
                                 }
+                                return null;
                               },
                               onSaved: (v) {
                                 setState(() {
                                   username = v!;
                                 });
+                                return null;
                               },
                             ),
                             const SizedBox(height: 10),
@@ -98,11 +102,13 @@ class _AuthRegisterScreenState extends State<AuthRegisterScreen> {
                                 setState(() {
                                   password = v;
                                 });
+                                return null;
                               },
                               onSaved: (v) {
                                 setState(() {
                                   password = v!;
                                 });
+                                return null;
                               },
                               keyboardType: TextInputType.visiblePassword,
                             ),
@@ -116,8 +122,11 @@ class _AuthRegisterScreenState extends State<AuthRegisterScreen> {
                                 if (password != v) {
                                   return "Password don't match";
                                 }
+                                return null;
                               },
-                              onSaved: (v) {},
+                              onSaved: (v) {
+                                return null;
+                              },
                               keyboardType: TextInputType.visiblePassword,
                             ),
                           ],

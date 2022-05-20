@@ -59,11 +59,13 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                                 if (v.length > 100) {
                                   return "Username too long";
                                 }
+                                return null;
                               },
                               onSaved: (v) {
                                 setState(() {
                                   username = v!;
                                 });
+                                return null;
                               },
                             ),
                             const SizedBox(height: 10),
@@ -76,11 +78,13 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                                 if (v.length < 8) {
                                   return "Password too short";
                                 }
+                                return null;
                               },
                               onSaved: (v) {
                                 setState(() {
                                   password = v!;
                                 });
+                                return null;
                               },
                               keyboardType: TextInputType.visiblePassword,
                             ),
