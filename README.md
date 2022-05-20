@@ -1,16 +1,23 @@
-# app
+# Geoloupix application
 
-A new Flutter project.
+## Introduction
 
-## Getting Started
+For our last year of high school, we have a project to realize in Computer Science. We chose to create a mobile application about geolocations, read more about it [here](https://github.com/geoloupix/specifications).
 
-This project is a starting point for a Flutter application.
+We finally decided to ship a Windows app as it's easier to work with and Flutter allows to do so really easily.
 
-A few resources to get you started if this is your first Flutter project:
+Mockups where made on [Figma](https://www.figma.com) for the mobile app, but it feats well on desktop too. [Open it](https://www.figma.com/file/g62AbHSWwl6h0pG915t3ZJ/Mockup) or check the embed below.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fg62AbHSWwl6h0pG915t3ZJ%2FMockup" allowfullscreen></iframe>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Technologies
+
+For this project, we're using [Flutter](https://flutter.dev) `3.0.1`, a cross-platform [Dart](https://dart.dev/) powered framework. More details about the backend (API) [here](https://github.com/geoloupix/api).
+
+## Using the app
+
+App executable are available in the repository's releases section. [View latest](https://github.com/geoloupix/app/releases).
+
+To use it, download the archive `Geoloupix-<version>-windows.zip`, unzip it and run the executable.
+
+## Architecture
