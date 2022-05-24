@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:geoloupix/app/controllers/api.dart';
 import 'package:geoloupix/app/models/user.dart';
-import 'package:geoloupix/app/utils/kvs.dart';
+import 'package:geoloupix/app/core/kvs.dart';
 
 class AuthController {
   AuthController();
